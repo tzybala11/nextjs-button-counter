@@ -43,20 +43,20 @@ export default function Counter(props) {
 
             <div className="controls">
                 <button
-                    click={decrement}
+                    onClick={decrement}
                     disabled={disabledDecrement}
                     aria-label={`Decremented by ${step}`}>
                     -{step}
                     </button>
             
             <button
-                click={reset}
+                onClick={reset}
                 aria-label='Reset Count'>
                 Reset
                 </button>
 
             <button
-                click={increment}
+                onClick={increment}
                 aria-label={`Incremented by ${step}`}>
                 +{step}
                 </button>
@@ -71,7 +71,7 @@ export default function Counter(props) {
                     type='number'
                     min='1'
                     value={step}
-                    newValue={handleStepChange}
+                    onChange={handleStepChange}
                     aria-label="Change step value">
                     </input>
             </div>
