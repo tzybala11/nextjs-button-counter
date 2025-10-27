@@ -13,4 +13,68 @@ export default function Counter(props) {
         const newValue = Number(newevent.target.value);
         setStep(Math.max(1, newValue));
     };
+
+    const increment = () => {
+        setCount(count + step);
+    };
+
+    const decrement = () => {
+        if (count - step >= 0) {
+            setCount(count - step);
+        }
+    };
+
+    const reset = () => {
+        setCount(initialCount);
+        setStep(Math.max(1, initialStep));
+    };
+
+    const disabledDecrement = count - step < 0;
+
+    return (
+        <div className='counter'>
+            <p
+                className='counter'
+                aria-live='polite'
+                role='status'>
+                    
+                Current Count: <strong className='count_value'>{count}</strong>
+            </p>
+
+            <div className="controls">
+                <button
+                    click={decrement}
+                    disabled={disabledDecrement}
+                    aria-label={`Decremented by ${step}`}>
+                    -{step}
+                    </button>
+            
+            <button
+                click={reset}
+                aria-label='Reset Count'>
+                Reset
+                </button>
+
+            <button
+                click={increment}
+                aria-label={`Incremented by ${step}`}>
+                +{step}
+                </button>
+            </div>
+
+            <div className='steps'>
+                <label htmlFor='input' className='label'>
+                    Step Amount:
+                </label>
+                <input
+                    id='input'
+                    type='number'
+                    min='1'
+                    value={step}
+                    newValue={handleStepChange}
+                    aria-label="Change step value">
+                    </input>
+            </div>
+        </div>
+    )
 }
